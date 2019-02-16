@@ -13,6 +13,7 @@ pool.on('error', (err, client) => {
 
 const getBanksByIfsc = (request, response) => {
 	const ifsc = parseInt(request.params.ifsc)
+	console.log(ifsc);
 	pool.query('select * from bank_details where bank_ifsc=$1', [ifsc], (error, results) => {
 		if (error) {
 			throw error
