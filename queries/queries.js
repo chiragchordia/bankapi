@@ -24,7 +24,7 @@ const getBanksByIfsc = (request, response) => {
 const getBanksDetails = (request, response) => {
 	const bankName = request.params.bankname;
 	const bankCity = request.params.city;
-	pool.query(`select * from bank_details where bank_name='$1' and bank_city='$2'`, [bankName], [bankCity], (error, results) => {
+	pool.query("select * from bank_details", [bankName], [bankCity], (error, results) => {
 		if (error) {
 			throw error
 		}
