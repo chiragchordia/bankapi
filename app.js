@@ -15,19 +15,19 @@ const bodyparser = require('body-parser');
 app.use(bodyparser.json());
 // Connection string parameters.
 global.connection = mysql.createConnection({
-	host:'localhost',
-    user: 'root',
-    password: '',
-    database: 'db_bank'
+  host: 'ec2-23-21-165-188.compute-1.amazonaws.com',
+  user: 'mbfqfcdptylngh',
+  password: 'cb8728d1f2c34c8cc1b0891f6b99757240c3ce5996b7821e6d8539498a2845fe',
+  database: 'd2uv20f2cqaj1u'
 })
 
-connection.connect(function(error){
-	if(!!error){
-		console.log(error);
-	}
-	else{
-		console.log('connected');
-	}
+connection.connect(function (error) {
+  if (!!error) {
+    console.log(error);
+  }
+  else {
+    console.log('connected');
+  }
 })
 
 
@@ -43,15 +43,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/bank',bankRouter);
+app.use('/bank', bankRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
