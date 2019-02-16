@@ -12,7 +12,7 @@ pool.on('error', (err, client) => {
 })
 
 const getBanksByIfsc = (request, response) => {
-	const ifsc = parseInt(request.params.id)
+	const ifsc = parseInt(request.params.ifsc)
 	pool.query('select * from bank_details where bank_ifsc=$1', [ifsc], (error, results) => {
 		if (error) {
 			throw error
@@ -22,8 +22,8 @@ const getBanksByIfsc = (request, response) => {
 }
 
 const getBanksDetails = (request, response) => {
-	const bankName = req.params.bankname;
-	const bankCity = req.params.city;
+	const bankName = request.params.bankname;
+	const bankCity = request.params.city;
 	pool.query('select * from bank_details where bank_name=$1 and bank_city=$2', [bankName], [bankCity], (error, results) => {
 		if (error) {
 			throw error
