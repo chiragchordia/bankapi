@@ -26,7 +26,7 @@ connection.connect(function (error) {
     console.log(error);
   }
   else {
-    console.log('connected');
+    console.log('Connected Succesfully.!');
   }
 })
 
